@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     // define a configuration that can be used for getting many secrets
-                    def configuration = [tenant: 'https://labindsv.secretsvaultcloud.com', credentialsId: 'dsv_admin']
+                    def configuration = [tenant: 'labindsv.secretsvaultcloud.com', credentialsId: 'dsv_admin']
                     
                     def DSV_SECRET_VALUE = dsvSecret(config: configuration, secretPath: 'databases:us-west:db01', secretDataKey: 'username')
                     sh 'echo "$DSV_SECRET_VALUE"'
