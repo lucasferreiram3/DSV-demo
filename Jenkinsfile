@@ -15,7 +15,7 @@ pipeline {
                         echo 'Not ok'
                     }
                     
-                    def SECRET1 = dsvSecret(config: configuration, secretPath: 'hello-world:jenkins', secretDataKey: 'secret1'){}
+                    def SECRET1 = dsvSecret(config: configuration, secretPath: 'databases:us-west:db01', secretDataKey: 'password'){}
                     sh 'echo "$SECRET1"'
                     if (SECRET1 == 'value1') {
                         echo 'Ok'
