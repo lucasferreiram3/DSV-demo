@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent any
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'SECONDS')
+    }
     stages {
         stage("Read DSV secrets") {
             steps {
