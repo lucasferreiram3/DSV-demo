@@ -9,19 +9,8 @@ pipeline {
                     
                     def DSV_SECRET_VALUE = dsvSecret(config: configuration, secretPath: 'databases:us-west:db01', secretDataKey: 'username')
                     sh 'echo "$DSV_SECRET_VALUE"'
-                    if (DSV_SECRET_VALUE == 'admindb01') {
-                        echo 'Ok'
-                    } else {
-                        echo 'Not ok'
-                    }
                     
-                    def SECRET1 = dsvSecret(config: configuration, secretPath: 'databases:us-west:db01', secretDataKey: 'password'){}
-                    sh 'echo "$SECRET1"'
-                    if (SECRET1 == 'db01srv@p4ssword') {
-                        echo 'Ok'
-                    } else {
-                        echo 'Not ok'
-                    }    
+                    def SECRET1 = dsvSecret(config: configuration, secretPath: 'databases:us-west:db01', secretDataKey: 'password'){}  
                 }
             }
         }
