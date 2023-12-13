@@ -3,6 +3,10 @@ pipeline {
     stages {
         stage("Read DSV secrets") {
             steps {
+                withCredentials([usernamePassword(credentialsId: 'dsv-jenkins', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    ./dsv secret search --auth-username '${PASS}' --auth-password'${USER}'    
+                }
+                
             }
         }
     }
