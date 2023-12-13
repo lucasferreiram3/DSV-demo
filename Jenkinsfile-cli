@@ -1,0 +1,9 @@
+pipeline {
+    agent any
+    stages {
+        stage("Read DSV secrets") {
+            steps {
+            }
+        }
+    }
+}
