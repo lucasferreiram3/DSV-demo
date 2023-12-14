@@ -5,7 +5,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dsv-jenkins', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                    sh 'ls -l'
-                   sh 'dsv init'
+                   sh 'dsv auth --auth-username ${USER} --auth-password ${PASS} >> /dev/null'
                    sh 'dsv secret search --auth-username ${USER} --auth-password ${PASS}'    
                 }  
             }
