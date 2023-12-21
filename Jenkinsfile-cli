@@ -7,7 +7,7 @@ pipeline {
                    sh 'ls -l'
                    sh './dsv auth >> /dev/null'
                    //sh './dsv secret read secrets:demo2 --filter ".attributes.password"'    
-                   def DSV_SECRET_PASS = dsv secret read secrets:demo2 --filter ".attributes.password"
+                   DSV_SECRET_PASS = dsv secret read secrets:demo2 --filter ".attributes.password"
                    sh 'echo "$DSV_SECRET_PASS"'
                 }  
             }
