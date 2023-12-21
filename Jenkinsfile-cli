@@ -6,7 +6,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dsv-jenkins', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                    sh 'ls -l'
                    sh './dsv auth >> /dev/null'
-                   sh './dsv secret search'    
+                   sh './dsv secret read secrets:demo2 --filter ".attributes.password"'    
                 }  
             }
         }
