@@ -7,10 +7,10 @@ pipeline {
                     // define a configuration that can be used for getting many secrets
                     def configuration = [tenant: 'labindsv', credentialsId: 'dsv_admin']
                     
-                    def DSV_SECRET_VALUE = dsvSecret(config: configuration, secretPath: 'databases:us-west:db01', secretDataKey: 'username')
+                    def DSV_SECRET_VALUE = dsvSecret(config: configuration, secretPath: 'demo', secretDataKey: 'username')
                     sh 'echo "$DSV_SECRET_VALUE"'
                     
-                    def SECRET1 = dsvSecret(config: configuration, secretPath: 'databases:us-west:db01', secretDataKey: 'password'){}  
+                    def SECRET1 = dsvSecret(config: configuration, secretPath: 'demo', secretDataKey: 'password'){}  
                 }
             }
         }
