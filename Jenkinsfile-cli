@@ -1,12 +1,16 @@
 pipeline {
     agent any
+    environment {
+        DSV_SECRET_PASS="dsv secret read secrets:demo2 --filter .attributes.password"
+    }
+
     stages {
         stage("Read DSV secrets") {
             steps {
                    //sh 'ls -l'
                    //sh './dsv auth >> /dev/null'
                    //sh './dsv secret read secrets:demo2 --filter ".attributes.password"'    
-                   def DSV_SECRET_PASS = sh(script: "`dsv secret read secrets:demo2 --filter .attributes.password`", returnStdout: true).trim()
+                   DSV_SECRET_PASS
                    sh 'echo "${DSV_SECRET_PASS}"' 
             }
         }
