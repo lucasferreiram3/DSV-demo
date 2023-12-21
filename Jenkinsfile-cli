@@ -5,6 +5,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dsv-jenkins', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                    sh 'ls -l'
+                   sh 'whoami'
                    sh './dsv auth >> /dev/null'
                    sh './dsv secret read secrets:demo2 --filter ".attributes.password"'    
                 }  
