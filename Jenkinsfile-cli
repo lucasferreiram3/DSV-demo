@@ -3,12 +3,11 @@ pipeline {
     stages {
         stage("Read DSV secrets") {
             steps {
-                   //sh 'ls -l'
                 sh './dsv auth >> /dev/null'
-                   //sh 'dsv secret read secrets:demo2 --filter .attributes.password'
-                //SECRET1="dsv secret read secrets:demo2 --filter .attributes.password"
-                //echo "Secret from DSV is = ${SECRET1}"
-                TIMESTAMP = sh(script: "echo `date +%F-%T`", returnStdout: true).trim()
+                script {
+                    SECRET1="dsv secret read secrets:demo2 --filter .attributes.password"
+                }
+                echo "Secret from DSV is = ${SECRET1}"
             }
         }
     }
