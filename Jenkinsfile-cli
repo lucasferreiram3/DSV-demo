@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh './dsv auth >> /dev/null'
                 script {
-                    SECRET1="dsv secret read secrets:demo2 --filter .attributes.password"
+                    SECRET1 = sh (script: "dsv secret read secrets:demo2 --filter .attributes.password", returnStdout: true).trim()
                 }
                 echo "Secret from DSV is = ${SECRET1}"
             }
