@@ -2,11 +2,11 @@ pipeline {
     agent any
     stages {
         stage("Read DSV secrets") {
+            SECRET1="(dsv secret read secrets:demo2 --filter .attributes.password)"
             steps {
                    //sh 'ls -l'
                 sh './dsv auth >> /dev/null'
-                   //sh 'dsv secret read secrets:demo2 --filter .attributes.password'
-                SECRET1="(dsv secret read secrets:demo2 --filter .attributes.password)"  
+                   //sh 'dsv secret read secrets:demo2 --filter .attributes.password'  
                 echo "Secret from DSV is = ${SECRET1}"
             }
         }
